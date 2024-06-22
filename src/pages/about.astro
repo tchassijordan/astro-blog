@@ -1,8 +1,61 @@
 ---
 import GlobalLayout from '../layouts/GlobalLayout.astro'
+
+const identity = {
+  name: 'Jason Lengstorf',
+  location: 'Portland, OR',
+  url: 'https://lengstorf.com',
+  hobbies: ['snowboarding', 'rock climbing', 'making videos']
+}
+
+const skills = ['JavaScript', 'React', 'Node.js', 'GraphQL']
+
+const happy = true
+const finished = false
+const goal = 'Learn Astro'
+
+const skillColor = 'navy'
 ---
 
 <GlobalLayout title='About page'>
   <h1>About page</h1>
   <p>This is the about page. It's pretty cool.</p>
+
+  <section>
+    <div>
+      <h3>Identity</h3>
+      <ul>
+        <li>Name: {identity.name}</li>
+        <li>Location: {identity.location}</li>
+        <li>Website: <a href={identity.url}>{identity.url}</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Hobbies</h3>
+      <ul>
+        {identity.hobbies.map(hobby => <li>{hobby}</li>)}
+      </ul>
+    </div>
+    <div>
+      <h3>Skills</h3>
+      <ul>
+        {skills.map(skill => <li class='skill'>{skill}</li>)}
+      </ul>
+    </div>
+
+    <div>
+      <h3>Goals</h3>
+      <ul>
+        <li>Learn Astro: {happy ? '😄' : '😢'}</li>
+        <li>Finish this project: {finished ? '🎉' : '😬'}</li>
+        <li>Current goal: {goal}</li>
+      </ul>
+    </div>
+  </section>
 </GlobalLayout>
+
+<style define:vars={{ skillColor }}>
+  .skill {
+    color: var(--skillColor);
+  }
+</style>
