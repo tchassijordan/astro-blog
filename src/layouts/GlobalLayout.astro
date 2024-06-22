@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import Navbar from '../components/Navbar.astro'
+import Hamburger from '../components/Hamburger.astro'
 import Footer from '../components/Footer.astro'
 
 export interface Props {
@@ -29,6 +30,7 @@ const { title } = Astro.props
   <body>
     <header>
       <Navbar navLinks={navLinks} />
+      <Hamburger />
     </header>
     <main>
       <slot />
@@ -65,3 +67,6 @@ const { title } = Astro.props
       monospace;
   }
 </style>
+<script>
+  import '../scripts/menu.ts'
+</script>
